@@ -10,13 +10,13 @@ MongoDB Atlas is a great choice for the foundation of an Operational Data Layer 
 
 ### Objectives:
 
-In this Lab you will explore both Batch and Real time Sync (you have an option to select which of the RTS options you want to select). 
+In this Lab you will explore both Batch and Real time Sync (optional). There are two methods to achieve Real time sync.
 
 [Batch/ Microbatch integration using the MongoDB connector in Synapse](#batch-integration)
 
 #### OPTIONAL
 
-Real time integration using MongoDB Atlas Triggers and Azure Functions
+[Real time integration using MongoDB Atlas Triggers and Azure Functions](#using-mongodb-atlas-triggers-and-azure-functions)
 
 OR
 
@@ -43,7 +43,7 @@ Follow the Github link [here](https://github.com/mongodb-partners/Azure_Synapse_
 **Real Time Integration** 
 For a real time sync or change data capture, an OOTB solution is not yet available, however a custom solution is published at Architecture Center [here](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/analytics/azure-synapse-analytics-integrate-mongodb-atlas). There are some other solutions also like using a MongoDB [spark streaming connector](https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1) or [MongoDB Atlas triggers](https://www.mongodb.com/docs/atlas/app-services/triggers/).
 
-#### Using MongoDB Atlas Triggers and Azure Functions:
+#### Using MongoDB Atlas Triggers and Azure Functions
 
 The real time sync between MongoDB Atlas and Synapse can be achieved using MongoDB [change streams](https://www.mongodb.com/docs/manual/changeStreams/) and a solution is detailed in the Architecture document [here](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/analytics/azure-synapse-analytics-integrate-mongodb-atlas). In this lab, we will perform a much simpler solution and the major advantage of this solution is that it uses [Atlas triggers](https://www.mongodb.com/docs/atlas/app-services/triggers/) and [functions](https://www.mongodb.com/docs/atlas/app-services/functions/) which abstracts the code needed to set up change streams and take an action based on the same.
 
@@ -60,7 +60,7 @@ Insert event -> Atlas Trigger -> Atlas function -> Azure function -> Store in AD
 
 **Follow the Github link [here](https://github.com/mongodb-partners/Azure_Synapse_RealTimeSync_Using_AtlasTrigger_and_AzureFunction) for a step by step process to practice this Lab.**
 
-#### Using MongoDB Spark Streaming Connector:
+#### Using MongoDB Spark Streaming Connector
 
 MongoDB’s latest [Spark connector v10.1](https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1)  provides [streaming capabilities](https://www.mongodb.com/docs/spark-connector/current/structured-streaming/) which allows streaming of changes from MongoDB or to MongoDB in both continuous and micro-batch modes. Using the connector, we just need a small piece of code that reads a stream of changes from MongoDB collection and writes to the ADLS gen2 in Synapse in a table format which can be queried like any other tables. The code is packaged as a Pipeline template and the User just needs to Import the pipeline, give the parameters to point to the MongoDB collection and table name in ADLS Gen2 and trigger the Pipeline.
 
