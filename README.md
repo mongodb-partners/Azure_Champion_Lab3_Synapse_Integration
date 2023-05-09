@@ -41,7 +41,8 @@ Follow the Github link [here](https://github.com/mongodb-partners/Azure_Synapse_
 
 #### OPTIONAL
 
-**Real Time Integration** 
+**Real Time Integration**   
+
 For a real time sync or change data capture, an OOTB solution is not yet available, however a custom solution is published at Architecture Center [here](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/analytics/azure-synapse-analytics-integrate-mongodb-atlas). There are some other solutions also like using a MongoDB [spark streaming connector](https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1) or [MongoDB Atlas triggers](https://www.mongodb.com/docs/atlas/app-services/triggers/).
 
 #### Using MongoDB Atlas Triggers and Azure Functions
