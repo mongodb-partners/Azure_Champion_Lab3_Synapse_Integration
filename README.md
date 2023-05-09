@@ -26,7 +26,8 @@ OR
 
 In Azure Synapse Analytics, you can integrate MongoDB on-premises instances and MongoDB Atlas as a Source or Sink resource. With historical data, you can retrieve all the data at once. You can also retrieve data incrementally for specific periods by using a filter in batch mode. Then you can use SQL pools and Apache Spark pools in Azure Synapse Analytics to transform and analyze the data. If you need to store the analytics or query results in an analytics data store, you can use the MongoDB sink resource in Azure Synapse Analytics.
 
-img1
+![Picture 1](https://github.com/mongodb-partners/Azure_Champion_Lab3_Synapse_Integration/assets/104025201/9368e051-32ea-4259-b246-9bcbf06aeb66)
+
 
 For more information about how to set up and configure the connectors, see these resources for [MongoDB](https://learn.microsoft.com/en-us/azure/data-factory/connector-mongodb?tabs=data-factory) and [MongoDB Atlas](https://learn.microsoft.com/en-us/azure/data-factory/connector-mongodb-atlas?tabs=data-factory). 
 
@@ -47,7 +48,7 @@ For a real time sync or change data capture, an OOTB solution is not yet availab
 
 The real time sync between MongoDB Atlas and Synapse can be achieved using MongoDB [change streams](https://www.mongodb.com/docs/manual/changeStreams/) and a solution is detailed in the Architecture document [here](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/analytics/azure-synapse-analytics-integrate-mongodb-atlas). In this lab, we will perform a much simpler solution and the major advantage of this solution is that it uses [Atlas triggers](https://www.mongodb.com/docs/atlas/app-services/triggers/) and [functions](https://www.mongodb.com/docs/atlas/app-services/functions/) which abstracts the code needed to set up change streams and take an action based on the same.
 
-img2
+<img width="452" alt="Picture 2" src="https://github.com/mongodb-partners/Azure_Champion_Lab3_Synapse_Integration/assets/104025201/83f9606d-9308-41a0-b184-3fab75013ef0">
 
 In this Lab, we will create an Atlas trigger, Atlas function and Azure function to copy the full document inserted into the MongoDB Atlas collection in an Insert operation to the default ADLS gen2 storage in Azure Synapse. The high level steps involved in this exercise are:
 
@@ -64,7 +65,7 @@ Insert event -> Atlas Trigger -> Atlas function -> Azure function -> Store in AD
 
 MongoDB’s latest [Spark connector v10.1](https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1)  provides [streaming capabilities](https://www.mongodb.com/docs/spark-connector/current/structured-streaming/) which allows streaming of changes from MongoDB or to MongoDB in both continuous and micro-batch modes. Using the connector, we just need a small piece of code that reads a stream of changes from MongoDB collection and writes to the ADLS gen2 in Synapse in a table format which can be queried like any other tables. The code is packaged as a Pipeline template and the User just needs to Import the pipeline, give the parameters to point to the MongoDB collection and table name in ADLS Gen2 and trigger the Pipeline.
 
-img3
+<img width="452" alt="Picture 3" src="https://github.com/mongodb-partners/Azure_Champion_Lab3_Synapse_Integration/assets/104025201/39deab35-76f1-433c-acc1-1510eb783775">
 
 In this Lab, we will set up an Azure Synapse pipeline with a spark notebook that can listen to changes in  a MongoDB collection (parameter) and push the entire inserted document into a table in the default ADLS gen2 in Synapse. The high level steps involved in this exercise are:
 
