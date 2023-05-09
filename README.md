@@ -20,7 +20,7 @@ In this Lab you will explore both Batch and Real time Sync (optional). There are
 
 OR
 
-Real time integration using MongoDB Spark Streaming Connector
+[Real time integration using MongoDB Spark Streaming Connector](#using-mongodb-spark-streaming-connector)
 
 #### Batch Integration
 
